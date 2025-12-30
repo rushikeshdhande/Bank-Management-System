@@ -52,7 +52,16 @@ return (
     {/* ===== CONTENT ===== */}
     <div className="relative z-10 flex items-center justify-center w-full h-full px-4">
 
-      <div className="w-full max-w-md rounded-2xl bg-white/5 backdrop-blur-xl border border-white/10 shadow-[0_0_60px_rgba(99,102,241,0.45)] p-8">
+      {/* ❌ shadow काढले */}
+      <div className="w-full max-w-md rounded-2xl bg-white/5 backdrop-blur-xl border border-white/10 p-8">
+{/* Bank Icon */}
+<div className="flex justify-center mb-3">
+  <img
+    src="/bank.png"
+    alt="Bank Icon"
+    className="w-16 h-16 object-contain"
+  />
+</div>
 
         <h2 className="text-2xl font-bold text-center text-white">
           Login
@@ -104,7 +113,7 @@ return (
           <button
             type="submit"
             disabled={loading}
-            className="w-full mt-4 py-2 rounded-xl bg-gradient-to-r from-indigo-500 to-violet-600 text-white font-semibold shadow-lg hover:scale-[1.03] transition disabled:opacity-60"
+            className="w-full mt-4 py-2 rounded-xl bg-gradient-to-r from-indigo-500 to-violet-600 text-white font-semibold hover:scale-[1.03] transition disabled:opacity-60"
           >
             {loading ? "Logging in..." : "Login"}
           </button>

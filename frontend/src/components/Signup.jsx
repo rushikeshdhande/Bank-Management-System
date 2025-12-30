@@ -77,7 +77,6 @@ const Signup = ({ onSignup, onSwitchToLogin }) => {
       setLoading(false);
     }
   };
-
 return (
   <div className="fixed inset-0 overflow-hidden">
 
@@ -95,9 +94,9 @@ return (
     {/* ===== CONTENT ===== */}
     <div className="relative z-10 min-h-screen flex items-center justify-center px-4">
 
-      <div className="w-full max-w-lg rounded-2xl bg-white/5 backdrop-blur-xl border border-white/10 shadow-[0_0_60px_rgba(99,102,241,0.45)] p-8">
+      <div className="w-full max-w-lg rounded-2xl bg-white/5 backdrop-blur-xl border border-white/10 p-6 text-white">
 
-        <h2 className="text-2xl font-bold text-center text-white">
+        <h2 className="text-2xl font-bold text-center">
           Create Account
         </h2>
 
@@ -114,7 +113,7 @@ return (
           </div>
         )}
 
-        <form onSubmit={handleSubmit} className="space-y-4">
+        <form onSubmit={handleSubmit} className="space-y-3">
 
           {/* Full Name */}
           <div>
@@ -126,7 +125,7 @@ return (
               onChange={handleChange}
               required
               placeholder="Enter your full name"
-              className="mt-1 w-full rounded-xl bg-white/10 border border-white/10 px-4 py-2 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+              className="mt-1 w-full rounded-xl bg-white/10 border border-white/10 px-4 py-2 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-indigo-500"
             />
           </div>
 
@@ -140,51 +139,69 @@ return (
               onChange={handleChange}
               required
               placeholder="Choose a username"
-              className="mt-1 w-full rounded-xl bg-white/10 border border-white/10 px-4 py-2 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+              className="mt-1 w-full rounded-xl bg-white/10 border border-white/10 px-4 py-2 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-indigo-500"
             />
           </div>
 
-          {/* Password */}
-          <div>
-            <label className="text-sm text-gray-300">Password</label>
-            <input
-              type="password"
-              name="password"
-              value={formData.password}
-              onChange={handleChange}
-              required
-              placeholder="Enter password"
-              className="mt-1 w-full rounded-xl bg-white/10 border border-white/10 px-4 py-2 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-500"
-            />
+          {/* Passwords */}
+          <div className="grid grid-cols-2 gap-3">
+            <div>
+              <label className="text-sm text-gray-300">Password</label>
+              <input
+                type="password"
+                name="password"
+                value={formData.password}
+                onChange={handleChange}
+                required
+                placeholder="Create password"
+                className="mt-1 w-full rounded-xl bg-white/10 border border-white/10 px-4 py-2 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+              />
+            </div>
+
+            <div>
+              <label className="text-sm text-gray-300">Confirm</label>
+              <input
+                type="password"
+                name="confirmPassword"
+                value={formData.confirmPassword}
+                onChange={handleChange}
+                required
+                placeholder="Confirm password"
+                className="mt-1 w-full rounded-xl bg-white/10 border border-white/10 px-4 py-2 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+              />
+            </div>
           </div>
 
-          {/* Confirm Password */}
-          <div>
-            <label className="text-sm text-gray-300">Confirm Password</label>
-            <input
-              type="password"
-              name="confirmPassword"
-              value={formData.confirmPassword}
-              onChange={handleChange}
-              required
-              placeholder="Confirm password"
-              className="mt-1 w-full rounded-xl bg-white/10 border border-white/10 px-4 py-2 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-500"
-            />
-          </div>
+          {/* Contact + Balance */}
+          <div className="grid grid-cols-2 gap-3">
+            <div>
+              <label className="text-sm text-gray-300">Contact</label>
+              <input
+                type="tel"
+                name="contact"
+                value={formData.contact}
+                onChange={handleChange}
+                required
+                maxLength="10"
+                placeholder="10-digit mobile"
+                className="mt-1 w-full rounded-xl bg-white/10 border border-white/10 px-4 py-2 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+              />
+            </div>
 
-          {/* Contact */}
-          <div>
-            <label className="text-sm text-gray-300">Contact Number</label>
-            <input
-              type="tel"
-              name="contact"
-              value={formData.contact}
-              onChange={handleChange}
-              required
-              maxLength="10"
-              placeholder="Enter 10-digit mobile number"
-              className="mt-1 w-full rounded-xl bg-white/10 border border-white/10 px-4 py-2 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-500"
-            />
+            <div>
+              <label className="text-sm text-gray-300">Opening Balance</label>
+              <input
+                type="number"
+                name="balance"
+                value={formData.balance}
+                onChange={handleChange}
+                required
+                min="0.01"
+                step="0.01"
+                placeholder="Initial amount"
+                className="mt-1 w-full rounded-xl bg-white/10 border border-white/10 px-4 py-2 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+              />
+            </div>
           </div>
 
           {/* Email */}
@@ -196,24 +213,8 @@ return (
               value={formData.email}
               onChange={handleChange}
               required
-              placeholder="Enter your email"
-              className="mt-1 w-full rounded-xl bg-white/10 border border-white/10 px-4 py-2 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-500"
-            />
-          </div>
-
-          {/* Opening Balance */}
-          <div>
-            <label className="text-sm text-gray-300">Opening Balance</label>
-            <input
-              type="number"
-              name="balance"
-              value={formData.balance}
-              onChange={handleChange}
-              required
-              min="0.01"
-              step="0.01"
-              placeholder="Enter opening balance"
-              className="mt-1 w-full rounded-xl bg-white/10 border border-white/10 px-4 py-2 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+              placeholder="Enter your email address"
+              className="mt-1 w-full rounded-xl bg-white/10 border border-white/10 px-4 py-2 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-indigo-500"
             />
           </div>
 
@@ -221,14 +222,13 @@ return (
           <button
             type="submit"
             disabled={loading}
-            className="w-full mt-4 py-2 rounded-xl bg-gradient-to-r from-indigo-500 to-violet-600 text-white font-semibold shadow-lg hover:scale-[1.03] transition disabled:opacity-60"
+            className="w-full mt-3 py-2 rounded-xl bg-gradient-to-r from-indigo-500 to-violet-600 font-semibold hover:scale-[1.03] transition disabled:opacity-60"
           >
             {loading ? "Creating Account..." : "Create Account"}
           </button>
         </form>
 
-        {/* Login Link */}
-        <p className="text-center text-sm text-gray-400 mt-6">
+        <p className="text-center text-sm text-gray-400 mt-4">
           Already have an account?{" "}
           <span
             className="text-indigo-400 cursor-pointer hover:underline"

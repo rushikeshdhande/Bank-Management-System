@@ -381,7 +381,7 @@ public class Account {
                 double prevOpoBal = 0.0;
                 if(rs3.next()){
                     prevOpoBal = rs3.getDouble("balance");
-                }else {
+                }zelse {
                     System.out.println("Invalid account number!");
                     return;
                 }
